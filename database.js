@@ -100,9 +100,11 @@ console.log('Relatório final de incidentes:');
 const relatorioFinal = await db.all(`SELECT * FROM incidentes`);
 console.table(relatorioFinal);
 
-
+return db;
 
 };
 
-criarBanco()
+// criarBanco()
 
+// module.exports cria uma ponte que permite compartilhar funções entre arquivos.
+module.exports = {criarBanco};
