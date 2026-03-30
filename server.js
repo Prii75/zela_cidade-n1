@@ -3,6 +3,10 @@
 const express = require('express'); //Frameork para criar o servidor e as rotas
 const { criarBanco } = require('./database'); //A chave que vai abrir a conexão com o banco de dados
 
+const cors = require('cors')
+app.use(cors{})
+
+
 const app = express(); //Criando o servidor
 app.use(express.json()); //Permite que o servidor entenda requisições em formato JSON
 
@@ -22,14 +26,6 @@ app.get('/', (req, res) => {
 
 });
 
-// Porta do servidor
-
-const PORT = 3000;
-
-app.listen(PORT, () => {
-
-    console.log(`Servidor rodando em http://localhost:${PORT}`);
-});
 
 // Rota de listagem para buscar todos  os problemas cadastrados
 
@@ -98,3 +94,12 @@ app.delete('/incidentes/:id', async (req, res) => {
 
         res.send(`Incidente ${id} foi removido com sucesso!`)   
 })
+
+// Porta do servidor
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+
+    console.log(`Servidor rodando em http://localhost:${PORT}`);
+});
