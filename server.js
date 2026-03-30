@@ -4,12 +4,13 @@ const express = require('express'); //Frameork para criar o servidor e as rotas
 const { criarBanco } = require('./database'); //A chave que vai abrir a conexão com o banco de dados
 
 const cors = require('cors')
-app.use(cors{})
+
 
 
 const app = express(); //Criando o servidor
 app.use(express.json()); //Permite que o servidor entenda requisições em formato JSON
 
+app.use(cors())
 // Criando a rota principal ./ Rota raiz
 app.get('/', (req, res) => {
 
@@ -103,3 +104,4 @@ app.listen(PORT, () => {
 
     console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
+// comentário
